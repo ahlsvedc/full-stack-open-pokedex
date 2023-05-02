@@ -54,7 +54,8 @@ jobs:
   bump_version_and_push_tag:
     needs: [simple_deployment_pipeline, deploy_pokedex_app]
     runs-on: ubuntu-latest
-    if: ${{ github.event_name == 'push' }}
+    # if: ${{ github.event_name == 'push' }}
+    if: ${{ toJson(github.event.commits.*.message) != *#skip* }}
     steps:
       - uses: actions/checkout@v3
         with:
