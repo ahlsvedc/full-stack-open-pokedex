@@ -52,12 +52,12 @@ jobs:
       #     DRY_RUN: true
 
   bump_version_and_push_tag:
-    runs-on: ubuntu-latest
     needs: [simple_deployment_pipeline, deploy_pokedex_app]
+    runs-on: ubuntu-latest
     if: ${{ github.event_name == 'push' }}
     steps:
       - uses: actions/checkout@v3
       - uses: anothrNick/github-tag-action@1.55.0
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        DEFAULT_BUMP: patch
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          DEFAULT_BUMP: patch
