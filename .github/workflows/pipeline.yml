@@ -42,3 +42,13 @@ jobs:
       - run: flyctl deploy --remote-only
         env:
           FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}
+
+  bump_version_and_push_tag:
+    needs: [simple_deployment_pipeline, deploy_pokedex_app]
+    runs-on: ubuntu-latest
+    if: ${{ github.event_name == 'push' }}
+    uses: anothrNick/github-tag-action@1.62.0
+    env:
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      DEFAULT_BUMP: patch
+      DRY_RUN: true
