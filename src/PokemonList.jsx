@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 const PokemonList = ({ pokemonList }) => {
   return (
     <div className="list-container">
-      PULL REQUEST TEXT 1
+      PULL REQUEST TEXT 2 should not be here
       {pokemonList.map(({ id, name }) => (
         <Link key={id} to={`/pokemon/${name}`} className="list-item" style={{ backgroundImage: `url(${`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${id}.png`})` }}>
           <div
