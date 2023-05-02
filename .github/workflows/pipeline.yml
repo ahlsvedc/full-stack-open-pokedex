@@ -21,16 +21,16 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: '16'
-      # - run: npm install
-      # - run: npm run eslint
-      # - run: npm run build
-      # - run: npm run test
-      # - name: e2e tests
-      #   uses: cypress-io/github-action@v5
-      #   with:
-      #     command: npm run test:e2e
-      #     start: npm run start-prod
-      #     wait-on: http://localhost:5000
+      - run: npm install
+      - run: npm run eslint
+      - run: npm run build
+      - run: npm run test
+      - name: e2e tests
+        uses: cypress-io/github-action@v5
+        with:
+          command: npm run test:e2e
+          start: npm run start-prod
+          wait-on: http://localhost:5000
 
   deploy_pokedex_app:
     needs: simple_deployment_pipeline
@@ -39,9 +39,9 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - uses: superfly/flyctl-actions/setup-flyctl@master
-      # - run: flyctl deploy --remote-only
-      #   env:
-      #     FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}
+      - run: flyctl deploy --remote-only
+        env:
+          FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}
 
       # - name: Bump version and push tag
       #   if: ${{ github.event_name == 'push' }}
@@ -55,6 +55,7 @@ jobs:
     needs: [simple_deployment_pipeline, deploy_pokedex_app]
     runs-on: ubuntu-latest
     # if: ${{ github.event_name == 'push' }}
+    #if: ${{ toJson(github.event.commits.*.message) == '*#skip*' }} # this also worked
     if: ${{ github.event_name == 'push' && !contains(toJson(github.event.commits.*.message), '#skip') }}
     steps:
       - uses: actions/checkout@v3
