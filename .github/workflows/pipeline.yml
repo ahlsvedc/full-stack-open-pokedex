@@ -72,7 +72,7 @@ jobs:
             severity: info
             text: A new version of pokedex deployed successfully!
             description: to https://pokedex-fullstack.fly.dev/ by ${{ github.actor }}
-            webhookUrl: ${{ secrets.TEST_HOOK }}   
+            webhookUrl: ${{ secrets.DISCORD_WEBHOOK }}   
 
   bump_version_and_push_tag:
     needs: [simple_deployment_pipeline, deploy_pokedex_app]
