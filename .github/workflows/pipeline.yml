@@ -41,7 +41,7 @@ jobs:
         with:
             severity: error
             text: A build failed!
-            description: ${{ github.actor }} broke the build! \n commit= ${{ github.sha }}
+            description: ${{ github.actor }} failed! commit= ${{ github.sha }} commit url= ${{ github.event.compare }}
             webhookUrl: ${{ secrets.TEST_HOOK }}   
 
 
