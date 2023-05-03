@@ -57,7 +57,8 @@ jobs:
         if: success()
         with:
             severity: info
-            description: A new version of pokedex deployed successfully!
+            text: A new version of pokedex deployed successfully!
+            description: to https://pokedex-fullstack.fly.dev/ by ${{ github.actor }}
             details: Deployment Succeeded!
             webhookUrl: ${{ secrets.TEST_HOOK }}   
 
