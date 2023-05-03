@@ -1,13 +1,13 @@
 name: Periodic helath check
 
-on:
-  push:
-    branches:
-      - master
-# on: workflow_dispatch # for manual dispatch
+# on:
+#   push:
+#     branches:
+#       - master
+on: workflow_dispatch # for manual dispatch
 # on:
 #   schedule:
-#     - cron:  '30 5,17 * * *'
+#     - cron:  '0 */12 * * *'
 
 jobs:
   periodic_check:
@@ -17,7 +17,7 @@ jobs:
         uses: jtalk/url-health-check-action@v3
         with:
           # Check the following URLs one by one sequentially
-          url: https://pokedex-fullstack.fly.dev/|https://pokedex-fullstack.fly.dev/health
+          url: https://pokedex-fullstack.fly.dev/|https://pokedex-fullstack.fly.dev/periodichealth
           # Follow redirects, or just report success on 3xx status codes
           follow-redirect: false # Optional, defaults to "false"
           # Fail this action after this many failed attempts
