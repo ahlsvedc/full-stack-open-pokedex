@@ -32,17 +32,17 @@ jobs:
       #     start: npm run start-prod
       #     wait-on: http://localhost:5000
       - name: Failing step
-      id: demo
-      run: exit 1
+        id: demo
+        run: exit 1
 
       - name: Build failure
-      uses: rjstone/discord-webhook-notify@v1
-      if: failure()
-      with:
-          severity: error
-          text: A build failed!
-          description: ${{ github.actor }} broke the build! \n commit: ${{ github.sha }}
-          webhookUrl: ${{ secrets.TEST_HOOK }}   
+        uses: rjstone/discord-webhook-notify@v1
+        if: failure()
+        with:
+            severity: error
+            text: A build failed!
+            description: ${{ github.actor }} broke the build! \n commit: ${{ github.sha }}
+            webhookUrl: ${{ secrets.TEST_HOOK }}   
 
 
   deploy_pokedex_app:
