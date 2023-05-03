@@ -31,9 +31,10 @@ jobs:
       #     command: npm run test:e2e
       #     start: npm run start-prod
       #     wait-on: http://localhost:5000
-      - name: Failing step
-        id: demo
-        run: exit 1
+
+      # - name: Failing step
+      #   id: demo
+      #   run: exit 1
 
       - name: Build failure
         uses: rjstone/discord-webhook-notify@v1
@@ -71,7 +72,7 @@ jobs:
             severity: info
             text: A new version of pokedex deployed successfully!
             description: to https://pokedex-fullstack.fly.dev/ by ${{ github.actor }}
-            webhookUrl: ${{ secrets.DISCORD_WEBHOOK }}   
+            webhookUrl: ${{ secrets.TEST_HOOK }}   
 
   bump_version_and_push_tag:
     needs: [simple_deployment_pipeline, deploy_pokedex_app]
