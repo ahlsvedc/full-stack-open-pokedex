@@ -15,7 +15,7 @@ app.get('/health', (req, res) => {
   res.send('ok')
 })
 
-app.get('/periodichealthERROR', (req, res) => {
+app.get('/periodichealthERRORTHING', (req, res) => {
   // throw 'error...'
   // // eslint-disable-next-line no-unreachable
   res.send('ok')
