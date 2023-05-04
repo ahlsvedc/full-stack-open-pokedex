@@ -22,7 +22,7 @@ app.get('/periodichealthERRORTHING', (req, res) => {
 })
 
 app.get('/version', (req, res) => {
-  res.send('19 SHOULD NOT DEPLOY?') // change this string to ensure a new version deployed
+  res.send('19 should cause error in periodic check') // change this string to ensure a new version deployed
 })
 
 app.listen(PORT, () => {
