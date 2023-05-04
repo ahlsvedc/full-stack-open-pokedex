@@ -15,14 +15,14 @@ app.get('/health', (req, res) => {
   res.send('ok')
 })
 
-app.get('/periodichealth', (req, res) => {
+app.get('/periodichealthERROR', (req, res) => {
   // throw 'error...'
   // // eslint-disable-next-line no-unreachable
   res.send('ok')
 })
 
 app.get('/version', (req, res) => {
-  res.send('18') // change this string to ensure a new version deployed
+  res.send('19 SHOULD NOT DEPLOY?') // change this string to ensure a new version deployed
 })
 
 app.listen(PORT, () => {
